@@ -19,7 +19,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.turnstile {
+      default = pkgs.turnstile.override {
         dinitSupprt = cfg.dinit.enable;
         runitSupport = cfg.runit.enable;
       };
