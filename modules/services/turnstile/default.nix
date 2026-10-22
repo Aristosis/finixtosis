@@ -13,14 +13,14 @@ in
       type = lib.types.bool;
       default = false;
       description = ''
-        Whether to enable [turnstilel](${cfg.package.meta.homepage}) as a system service.
+        Whether to enable [turnstile](${cfg.package.meta.homepage}) as a system service.
       '';
     };
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.turnstile.override {
-        dinitSupprt = cfg.dinit.enable;
+      default = pkgs.turnstile {
+        dinitSupport = cfg.dinit.enable;
         runitSupport = cfg.runit.enable;
       };
       description = ''
@@ -238,7 +238,7 @@ in
 
   config = lib.mkIf cfg.enable {
     services.turnstile.package = pkgs.turnstile {
-      dinitSupprt = cfg.dinit.enable;
+      dinitSupport = cfg.dinit.enable;
       runitSupport = cfg.runit.enable;
     };
 
